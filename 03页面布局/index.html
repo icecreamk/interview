@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style type="text/css">
+      html * {
+        margin: 0;
+        padding: 0;
+      }
+      section {
+        margin-top: 10px;
+      }
+    </style>
+<body>
+    <style type="text/css">
+      .float div {
+        min-height: 100px;
+      }
+      .float .left {
+        background: red;
+        width: 100px;
+        float: left;
+      }
+      .float .right {
+        float: right;
+        width: 100px;
+        background: green;
+      }
+      .float .center {
+        background: yellow;
+      }
+    </style>
+    <section class="float">
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="center">使用float布局 缺点：元素脱离文档
+        <p>增加高度不可以自适应</p>
+        <p>增加高度不可以自适应</p>
+        <p>增加高度不可以自适应</p>
+        <p>增加高度不可以自适应</p>
+        <p>增加高度不可以自适应</p>
+      </div>
+    </section>
+    <style type="text/css">
+      .position div {
+        min-height: 100px;
+        position: absolute;
+      }
+      .position .left {
+        left: 0;
+        width: 100px;
+        background: red;
+      }
+      .position .right {
+        right: 0;
+        width: 100px;
+        background: green;
+      }
+      .position .center {
+        left: 100px;
+        right: 100px;
+        background: yellow;
+      }
+    </style> 
+    <section>
+      <div class="position">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="center">使用position布局 缺点：元素脱离文档流
+          <p>增加高度不可以自适应</p>
+          <p>增加高度不可以自适应</p>
+          <p>增加高度不可以自适应</p>
+          <p>增加高度不可以自适应</p>
+        </div>
+      </div>
+    </section>
+    <style type="text/css">
+      .flex {
+        margin-top: 150px;
+        display: flex;
+        /*min-height: 100px;*/
+      }
+      .flex .left {
+        width: 100px;
+        background: red;
+      }
+      .flex .right {
+        width: 100px;
+        background: green;
+      }
+      .flex .center {
+        flex: 1;
+        background: yellow;
+      }
+    </style>
+    <section>
+      <div class="flex">
+        <div class="left"></div>
+        <div class="center">使用flex布局 解决以上两种的缺点，但是兼容性不好，低版本不支持
+          <p>增加高度可以自适应</p>
+          <p>增加高度可以自适应</p>
+          <p>增加高度可以自适应</p>
+          <p>增加高度可以自适应</p>
+          <p>增加高度可以自适应</p>
+          <p>增加高度可以自适应</p>
+          <p>增加高度可以自适应</p>
+        </div>
+        <div class="right"></div>
+      </div>
+    </section>
+    <style type="text/css">
+      .table {
+        width: 100%;
+        height: 20px;
+        display: table;
+      }
+      .table div {
+        display: table-cell;
+      }
+      .table .left {
+        width: 100px;
+        background: red;
+      }
+      .table .right {
+        width: 200px;
+        background: green;
+      }
+      .table .center {
+        background: yellow;
+      }
+    </style>
+    <section>
+      <div class="table">
+        <div class="left"></div>
+        <div class="center">表格布局 兼容性好，兼容低版本浏览器，但是当一个表格高度超出时，其他也会跟着变高(该特性不是缺点，有时候反而可以利用它)
+          <p>增加高度可以自适应</p>
+          <p>增加高度可以自适应</p>
+          <p>增加高度可以自适应</p>
+          <p>增加高度可以自适应</p>
+          <p>增加高度可以自适应</p>
+          <p>增加高度可以自适应</p>
+          <p>增加高度可以自适应</p>
+        </div>
+        <div class="right"></div>
+      </div>
+    </section>
+    <style type="text/css">
+      .grid {
+        display: grid;
+        width: 100%;
+        grid-template-rows: 150px;
+        grid-template-columns: 100px auto 100px;
+      }
+      .grid .left {
+        background: red;
+      }
+      .grid .right {
+        background: green;
+      }
+      .grid .center {
+        background: yellow;
+      }
+    </style>
+    <section>
+      <div class="grid">
+        <div class="left"></div>
+        <div class="center">网格布局
+          <p>增加高度不可以自适应</p>
+          <p>增加高度不可以自适应</p>
+          <p>增加高度不可以自适应</p>
+          <p>增加高度不可以自适应</p>
+          <p>增加高度不可以自适应</p>
+          <p>增加高度不可以自适应</p>
+          <p>增加高度不可以自适应</p>
+        </div>
+        <div class="right"></div>
+      </div>
+    </section>
+</body>
+</html>
