@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style type="text/css">
+* {
+  margin: 0;
+  padding: 0;
+}
+.main {
+  margin: 10px 0;
+  background: pink;
+  overflow: hidden; /*同一个BFC区域内元素垂直方向上的margin会发生重叠*/
+}
+.main p {
+  margin: 10px auto 10px;
+  background: red;
+}
+
+    </style>
+    <body>
+      <div class="main">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+      </div>
+
+      <div class="main">
+        <p>1</p>
+        <div style="overflow: hidden;"> <!-- BFC是一个独立的容器，与外面的元素不会互相影响，所以margin不会重叠-->
+          <p>2</p>
+        </div>
+        <p>3</p>
+      </div>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style type="text/css">
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  background: red;
+}
+.left {
+  height: 100px;
+  width: 100px;
+  float: left;
+  background: #777;
+}
+
+.main {
+  height: 120px;
+  background: green;
+  overflow: auto; /*BFC的区域不会与浮动元素发生重叠*/
+}
+
+.parent {
+  margin-top: 10px;
+  background: red;
+  overflow: hidden;/*计算某BFC高度时,子元素中的浮动元素也会参与计算*/
+}
+.parent span {
+  float: left;
+}
+
+    </style>
+    <body>
+    <div class="container">
+      <div class="left"></div>
+      <div class="main"></div>
+    </div>
+    <div class="parent">
+      <span class="child">我是浮动的</span>
+    </div>
+    </body>
+</html>
