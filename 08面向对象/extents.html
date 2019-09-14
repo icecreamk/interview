@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body></body>
+<script>
+
+// 第一种：使用构造函数实现继承 缺点：子类无法继承父类原型链上的
+function Parent1() {
+    this.name = 'name'
+}
+
+Parent1.prototype.say = function() {
+    console.log(this.name + this.age)
+}
+
+function Child1() {
+    Parent1.call(this) // 或使用apply
+    this.age = '5'
+}
+
+console.log(new Child1())
+// console.log(new Child1().say()) // 报错，无法继承say方法
+
+console.log('----------分割线----------')
+
+// 第二种:使用原型链继承 缺点:实例对象会共享父类的属性，一个修改，其他也会影响
+function Parent2() {
+    this.name = 'name'
+    this.arr = [1,2]
+}
+
+function Child2() {
+    this.age = '5'
+}
+
+Child2.prototype = new Parent2()
+
+console.log(new Child2())
+const s1 = new Child2()
+const s2 = new Child2()
+s1.name = 'test'
+s1.arr.push(3)
+console.log(s1.name, s2.name)
+console.log(s1.arr, s2.arr) // 都是1 2 3
+
+console.log('----------美丽的分割线----------')
+
+// 第三种：组合方式（以上两种方式结合）
+function Parent3() {
+    this.name = 'name'
+    this.arr = [1]
+}
+
+Parent3.prototype.say = function() {
+    return this.arr
+}
+
+function Child3() {
+    Parent3.call(this) // 或使用apply
+    this.age = '5'
+}
+
+// Child3.prototype = new Parent3() // 该写法可以优化成下一行
+Child3.prototype = Parent3.prototype // 相比与上一行的写法，该写法优点是可以少执行一次父级的构造函数
+
+const s3 = new Child3()
+const s4 = new Child3()
+s3.arr.push(7)
+console.log(s3.say(), s4.say())
+console.log(s3 instanceof Child3, s3 instanceof Parent3)
+console.log(s3.constructor) // 缺点：constructor指向父级构造函数，无法区分实例对象是通过子类的还是父类实例化的
+
+console.log('-------分割线-------')
+
+// 优化组合方式
+function Parent4() {
+    this.name = 'name'
+    this.arr = [1]
+}
+
+Parent4.prototype.say = function() {
+    return this.arr
+}
+
+function Child4() {
+    Parent4.call(this) // 或使用apply
+    this.age = '5'
+}
+
+Child4.prototype = Object.create( Parent4.prototype)
+Child4.prototype.constructor = Child4
+
+const s5 = new Child4()
+const s6 = new Child4()
+s5.arr.push(7)
+console.log(s5.say(), s6.say())
+console.log(s5 instanceof Child4, s5 instanceof Parent4)
+console.log(s5.constructor) // constructor指向子类
+
+</script>
+</html>
