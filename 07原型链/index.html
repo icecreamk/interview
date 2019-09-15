@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>原型链</title>
+    </head>
+    <body>
+    </body>
+    <script type="text/javascript">
+        // *** 创建对象方式
+        // 1 字面量
+        var o1 = { name: 'o1' }
+        var o2 = new Object({name: 'o2'})
+        console.log(o1) // {name: "o1"}
+        console.log(o2) // {name: "o2"}
+
+        // 2 构造函数
+        var O = function(name){this.name = name}
+        var o3 = new O('o3')
+        console.log(o3) // O {name: "o3"}
+
+        // Object.create
+        var _o = {name: '_o'}
+        var o4 = Object.create(_o)
+        console.log(o3) // {}
+
+        // *** 原型链
+        // 构造函数与原型对象通过prototype与constructor关联
+        console.log(O.prototype.constructor === O) // true
+        // 实例.__proto__与构造函数.prototype指向同一地址
+        console.log(o3.__proto__ === O.prototype) // true
+
+        // *** instanceof
+        // instanceof判断实例与构造函数
+        console.log(o3 instanceof O) // true
+        // instanceof判断实例与原型链上的构造函数
+        console.log(o3 instanceof Object) // true
+        // 实例的原型对象指向的构造函数与构造函数比较
+        console.log(o3.__proto__.constructor === O) // true
+        // 实例的原型对象指向的构造函数与原型链上的构造函数比较
+        console.log(o3.__proto__.constructor === Object) // false
+
+    </script>
+</html>
