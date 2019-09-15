@@ -22,7 +22,7 @@
         // Object.create
         var _o = {name: '_o'}
         var o4 = Object.create(_o)
-        console.log(o3) // {}
+        console.log(o3) // {}，其属性是通过原型链获取
 
         // *** 原型链
         // 构造函数与原型对象通过prototype与constructor关联
@@ -39,6 +39,16 @@
         console.log(o3.__proto__.constructor === O) // true
         // 实例的原型对象指向的构造函数与原型链上的构造函数比较
         console.log(o3.__proto__.constructor === Object) // false
+
+        // *** new 运算符
+        var _new = function(func){
+            var o = Object.create(func.prototype)
+            var _o = func.call(o)
+            // 不应用typeof判断，[] null 也识别为 'object'
+            return _o instanceof Object ? _o : o
+        }
+        var ins = _new(O)
+        console.log(ins instanceof O) // true
 
     </script>
 </html>
