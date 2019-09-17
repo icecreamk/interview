@@ -1,0 +1,22 @@
+- 同源（协议、域名、端口）
+- 什么是同源策略及限制
+    * 同源策略限制从一个源加载的资源如何与另一个源的资源进行交互，这是一种用于隔离潜在恶意资源的安全机制
+- 同源策略限制主要限制在哪些方面
+    * Cookie,localStorage,indexDB无法相互读取
+    * DOM无法相互获取
+    * Ajax无法发送（跨域）
+- 前后端如何通信
+    * Ajax(不支持跨域)
+    * WebSocket(支持跨域)
+    * CORS(支持跨域)
+- 如何创建Ajax
+    * XMLHttpRequest对象
+    * 兼容性处理
+    * 事件的触发条件
+    * 事件的触发顺序
+- 跨域通信的几种方式
+    * JSONP（利用script标签）
+    * Hash
+    * postMessage（html5中的一个标准）
+    * WebSocket
+    * CORS（在Ajax的基础上，在头部加上允许跨域的字段）
