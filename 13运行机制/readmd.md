@@ -1,7 +1,8 @@
 ### js运行机制（浏览器和js如何交互的）
 + 单线程(同一时间只能做一件事)
 + 任务队列(与异步有关，异步任务放在队列里，同步任务执行完后，才会执行任务队列里的)
-+ Event Loop(setTimeout(1000, fn(){}))
++ Event Loop
+    * setTimeout(fn(){}, 1000)
     * 1秒后才把fn放在任务队列中，Event Loop通过循环看队列中有没有任务，有任务就会执行
 + 异步任务有哪些
     * setTimeout,setInterval
